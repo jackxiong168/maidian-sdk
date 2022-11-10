@@ -1,0 +1,18 @@
+apply plugin: 'maven'
+
+version=pluginVersion
+group = "com.sensorsdata.analytics.android"
+def nexusRepositoryUrl=nexusReleases
+
+if (!false.toBoolean()){
+    version = "${version}"
+    nexusRepositoryUrl=nexusSnapshots
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}
